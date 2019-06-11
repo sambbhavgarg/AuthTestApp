@@ -173,6 +173,7 @@ return [
         AuthTestApp\Providers\AuthServiceProvider::class,
         // AuthTestApp\Providers\BroadcastServiceProvider::class,
         AuthTestApp\Providers\EventServiceProvider::class,
+        AuthTestApp\Providers\TelescopeServiceProvider::class,
         AuthTestApp\Providers\RouteServiceProvider::class,
         AuthTestApp\Providers\SocialServiceProvider::class
 

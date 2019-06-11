@@ -18,7 +18,7 @@ class ProjectsController extends Controller
 
     public function __construct(){
 
-      $this->middleware('auth');//adds to all.           add ---> ->except(['index'])
+      // $this->middleware('auth');//adds to all.           add ---> ->except(['index'])
 //                                                                 ->only(['index,store, etc'])
     }
 
@@ -76,7 +76,11 @@ class ProjectsController extends Controller
     {
         // $twitter = app('twitter');
         // dd($twitter);
-        abort_if($project->owner_id !== auth()->id(),403);
+
+        // abort_if($project->owner_id !== auth()->id(),403);
+        //abort_unless();
+        $this->authorize('view',$project);
+
         return view('project.show',compact('project'));
     }
 
