@@ -19,7 +19,7 @@
       <div class="field">
         <label class="label" for="description">Description</label>
           <div class="control">
-            <input name="description" type="textarea" class="input {{ $errors->has('description') ? 'is-danger' : '' }}" placeholder="Enter Description" value="{{ old('description') }}">
+            <textarea name="description" class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" placeholder="Enter Description">{{ old('description') }}</textarea>
           </div>
       </div>
 

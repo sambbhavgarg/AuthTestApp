@@ -24,7 +24,7 @@
       <div class="field">
         <label class="label">Description</label>
         <div class="control">
-          <input class="input" type="textarea" name="description"
+          <input class="textarea" name="description"
                     placeholder="Description" value="{{ old('description') }}">
         </div>
       </div>

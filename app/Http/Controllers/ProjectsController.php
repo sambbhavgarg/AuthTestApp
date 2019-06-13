@@ -77,10 +77,7 @@ class ProjectsController extends Controller
      */
     public function store()
     {
-      request()->validate([
-      'title'=>['required', 'min:3'],
-      'description'=>['required', 'min:3']
-    ]);
+      $this->validateRequest();
 
       $project = Project::create([
         'title' => request('title'),
@@ -91,7 +88,7 @@ class ProjectsController extends Controller
 
 
 
-       \Mail::to('sambbhavgarg@gmail.com')->send(
+      \Mail::to($project->owner->email)->send(
         new ProjectCreated($project)
       );
 
@@ -137,11 +134,8 @@ class ProjectsController extends Controller
     public function update(Request $request, Project $project)
     {
 
-      $attributes = request()->validate([
-        'title' => ['required', 'min:3'],
-        'description' => ['required', 'min:3']
-      ]);
-      
+      $attributes = $this->validateRequest();
+
       $project->update(request(['title','description']));
       // dd(request()->all());
       return redirect('/projects');
@@ -157,5 +151,12 @@ class ProjectsController extends Controller
     {
       // $project->delete();
       // return redirect('/projects');
+    }
+
+    public function validateRequest(){
+      return request()->validate([
+        'title' => ['required', 'min:3'],
+        'description' => ['required', 'min:3']
+      ]);
     }
 }
