@@ -1,6 +1,7 @@
 <?php
 
 namespace AuthTestApp;
+
 use AuthTestApp\Task;
 
 use Illuminate\Database\Eloquent\Model;

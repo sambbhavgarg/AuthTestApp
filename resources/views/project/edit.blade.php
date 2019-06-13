@@ -17,7 +17,7 @@
         <label class="label">Title</label>
         <div class="control">
           <input class="input" type="text" name="title"
-                    placeholder="Title" value="{{ $project->title }}">
+                    placeholder="Title" value="{{ old('title') }}">
         </div>
       </div>
 
@@ -25,7 +25,7 @@
         <label class="label">Description</label>
         <div class="control">
           <input class="input" type="textarea" name="description"
-                    placeholder="Description" value="{{ $project->description }}">
+                    placeholder="Description" value="{{ old('description') }}">
         </div>
       </div>
 
@@ -45,6 +45,7 @@
           <button class="button is-link " type="submit">Delete</button>
         </div>
       </div>
+      @include('errors')
   </form>
   </body>
 </html>

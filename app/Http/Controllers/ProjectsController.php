@@ -5,6 +5,7 @@ namespace AuthTestApp\Http\Controllers;
 use AuthTestApp\Project;
 use Illuminate\Http\Request;
 use AuthTestApp\Services\Twitter;
+use AuthTestApp\Mail\ProjectCreated;
 
 class ProjectsController extends Controller
 {
@@ -18,20 +19,44 @@ class ProjectsController extends Controller
 
     public function __construct(){
 
-      // $this->middleware('auth');//adds to all.           add ---> ->except(['index'])
+       $this->middleware('auth');//adds to all.           add ---> ->except(['index'])
 //                                                                 ->only(['index,store, etc'])
     }
 
     public function index()
 
     {
+        //---------------------------------------------
+
         // auth()->id() -> returns user id
         // auth()->user() -> returns user Name
         // auth()->check() -> returns boolean
         // auth()->guest() -> returns if user is guest
 
-        $projects = Project::where('owner_id',auth()->id())->get();
-        return view('project.index',compact('projects'));
+        //Auth'd LoCs below
+        //-----------------------------------------------
+        //$projects = auth()->user()->projects;
+
+        //---the above is more readable than the below---
+
+        //$projects = Project::where('owner_id',auth()->id())->get();
+
+        return view('project.index',[
+          'projects' => auth()->user()->projects
+        ]);//most readable out of all the auth'd LoCs
+
+        //----------------------------------------------
+
+        // cache()->rememberForever('stats',function(){
+        //   return ['projects'=>50,'names'=> 'many'];
+        // });
+
+        /**
+        *tinker loc-
+        *  cache()->get('stats')['projects' or 'names']
+        */
+
+
     }
 
     /**
@@ -50,18 +75,25 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
       request()->validate([
-      'title'=>['required'],
-      'description'=>['required']
+      'title'=>['required', 'min:3'],
+      'description'=>['required', 'min:3']
     ]);
 
-      Project::create([
+      $project = Project::create([
         'title' => request('title'),
         'description' => request('description'),
-        'owner_id' => auth()->id()
+        'owner_id' => auth()->id(),
+        //'owner_name' =>auth()->user()
       ]);
+
+
+
+       \Mail::to('sambbhavgarg@gmail.com')->send(
+        new ProjectCreated($project)
+      );
 
       return redirect('/projects/create');
     }
@@ -79,7 +111,7 @@ class ProjectsController extends Controller
 
         // abort_if($project->owner_id !== auth()->id(),403);
         //abort_unless();
-        $this->authorize('view',$project);
+        //$this->authorize('view',$project);
 
         return view('project.show',compact('project'));
     }
@@ -104,6 +136,12 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+
+      $attributes = request()->validate([
+        'title' => ['required', 'min:3'],
+        'description' => ['required', 'min:3']
+      ]);
+      
       $project->update(request(['title','description']));
       // dd(request()->all());
       return redirect('/projects');

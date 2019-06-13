@@ -10,6 +10,7 @@
     <h1> TEST </h1>
     <div class="content">
       <h4><a href="/projects/create">Create</a></h4>
+      <h4><a href="/home">Go to Portal</a></h4>
       <ul>
         <h3>List from DB</h3>
         @foreach ($projects as $project)

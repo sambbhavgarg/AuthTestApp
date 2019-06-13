@@ -34,7 +34,6 @@ Route::get('/','ProjectsController@index');
 Route::resource('projects','ProjectsController');
 
 Route::post('/projects/{project}/tasks','ProjectTaskController@store');
-
 Route::post('completed-tasks/{task}','CompletedTasksController@store');
 Route::delete('completed-tasks/{task}','CompletedTasksController@destroy');
 //The following was replaced by the above for better encapsulation!
