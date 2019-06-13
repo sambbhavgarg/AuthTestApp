@@ -86,7 +86,8 @@ class ProjectsController extends Controller
         //'owner_name' =>auth()->user()
       ]);
 
-      event(new ProjectCreated($project));
+      //dont need the line below anymore since dispatchEvents is now here
+      // event(new ProjectCreated($project));
 
       return redirect('/projects/create');
     }
