@@ -4,8 +4,8 @@ namespace AuthTestApp\Http\Controllers;
 
 use AuthTestApp\Project;
 use Illuminate\Http\Request;
-use AuthTestApp\Services\Twitter;
-use AuthTestApp\Mail\ProjectCreated;
+// use AuthTestApp\Services\Twitter;
+use AuthTestApp\Events\ProjectCreated;//needed
 
 class ProjectsController extends Controller
 {
@@ -86,11 +86,7 @@ class ProjectsController extends Controller
         //'owner_name' =>auth()->user()
       ]);
 
-
-
-      \Mail::to($project->owner->email)->send(
-        new ProjectCreated($project)
-      );
+      event(new ProjectCreated($project));
 
       return redirect('/projects/create');
     }
