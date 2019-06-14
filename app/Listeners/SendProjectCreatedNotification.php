@@ -1,9 +1,9 @@
 <?php
 
-namespace AuthTestApp\Listeners;
+namespace App\Listeners;
 
-use AuthTestApp\Mail\ProjectCreated as ProjectCreatedMail;
-use AuthTestApp\Events\ProjectCreated;
+use App\Mail\ProjectCreated as ProjectCreatedMail;
+use App\Events\ProjectCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace AuthTestApp\Http\Controllers;
+namespace App\Http\Controllers;
 
-use AuthTestApp\Task;
-use AuthTestApp\Project;
+use App\Task;
+use App\Project;
 use Illuminate\Http\Request;
 
 class ProjectTaskController extends Controller

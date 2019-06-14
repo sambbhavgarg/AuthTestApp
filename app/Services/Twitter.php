@@ -1,6 +1,6 @@
 <?php
 
-namespace AuthTestApp\Services;
+namespace App\Services;
 
 class Twitter{
 

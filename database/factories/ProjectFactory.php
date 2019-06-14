@@ -2,7 +2,7 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use AuthTestApp\Project;
+use App\Project;
 use Faker\Generator as Faker;
 
 $factory->define(Project::class, function (Faker $faker) {

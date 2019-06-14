@@ -1,11 +1,11 @@
 <?php
 
-namespace AuthTestApp;
+namespace App;
 
-use AuthTestApp\Task;
+use App\Task;
 
-use AuthTestApp\Events\ProjectCreated;
-// use AuthTestApp\Mail\ProjectCreated;
+use App\Events\ProjectCreated;
+// use App\Mail\ProjectCreated;
 // use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Model;
 

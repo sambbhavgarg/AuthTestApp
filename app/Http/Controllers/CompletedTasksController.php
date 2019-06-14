@@ -1,8 +1,8 @@
 <?php
 
-namespace AuthTestApp\Http\Controllers;
+namespace App\Http\Controllers;
 
-use AuthTestApp\Task;
+use App\Task;
 use Illuminate\Http\Request;
 
 class CompletedTasksController extends Controller

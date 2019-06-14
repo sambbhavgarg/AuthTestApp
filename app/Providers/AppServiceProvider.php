@@ -1,10 +1,10 @@
 <?php
 
-namespace AuthTestApp\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use AuthTestApp\Services\Twitter;
+use App\Services\Twitter;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -17,8 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-          \AuthTestApp\Repositories\UserRepository::class,
-          \AuthTestApp\Repositories\DbUserRepository::class
+          \App\Repositories\UserRepository::class,
+          \App\Repositories\DbUserRepository::class
         );
     }
 

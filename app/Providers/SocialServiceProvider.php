@@ -1,8 +1,8 @@
 <?php
 
-namespace AuthTestApp\Providers;
+namespace App\Providers;
 
-use AuthTestApp\Services\Twitter;
+use App\Services\Twitter;
 use Illuminate\Support\ServiceProvider;
 
 class SocialServiceProvider extends ServiceProvider

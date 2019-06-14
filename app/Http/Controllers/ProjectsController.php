@@ -1,11 +1,11 @@
 <?php
 
-namespace AuthTestApp\Http\Controllers;
+namespace App\Http\Controllers;
 
-use AuthTestApp\Project;
+use App\Project;
 use Illuminate\Http\Request;
-// use AuthTestApp\Services\Twitter;
-use AuthTestApp\Events\ProjectCreated;//needed
+// use App\Services\Twitter;
+use App\Events\ProjectCreated;//needed
 
 class ProjectsController extends Controller
 {
@@ -95,7 +95,7 @@ class ProjectsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \AuthTestApp\Project  $project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function show(Project $project, Twitter $twitter)
@@ -113,7 +113,7 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \AuthTestApp\Project  $project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
@@ -125,7 +125,7 @@ class ProjectsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \AuthTestApp\Project  $project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Project $project)
@@ -141,7 +141,7 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \AuthTestApp\Project  $project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)

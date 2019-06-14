@@ -1,6 +1,6 @@
 <?php
 
-namespace AuthTestApp\Repositories;
+namespace App\Repositories;
 
 interface UserRepository{
   public function create($attribute);

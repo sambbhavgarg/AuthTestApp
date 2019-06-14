@@ -34,7 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AuthTestApp\\": "app/"
+            "App\\": "app/"
         },
         "classmap": [
             "database/seeds",

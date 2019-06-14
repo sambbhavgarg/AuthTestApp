@@ -1,7 +1,7 @@
 <?php
 
-namespace AuthTestApp;
-use AuthTestApp\Project;
+namespace App;
+use App\Project;
 
 use Illuminate\Database\Eloquent\Model;
 
