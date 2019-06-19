@@ -31,6 +31,12 @@
       @include('errors')
     </form>
 
+    @if(session('message'))
+    <div class="notification is-success">
+      <h1>{{ session('message') }}</h1>
+    </div>
+    @endif
+
     <h3><a href="/projects">Go Back</a></h3>
   </body>
 </html>

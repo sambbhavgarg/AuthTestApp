@@ -89,6 +89,8 @@ class ProjectsController extends Controller
       //dont need the line below anymore since dispatchEvents is now here
       // event(new ProjectCreated($project));
 
+      flash('Project Created');
+
       return redirect('/projects/create');
     }
 
@@ -98,7 +100,7 @@ class ProjectsController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project, Twitter $twitter)
+    public function show(Project $project)//, Twitter $twitter)
     {
         // $twitter = app('twitter');
         // dd($twitter);

@@ -18,7 +18,7 @@ class ProjectTaskController extends Controller
       // ]);
 
       $project->addTask(
-        request()->validate(  ['description' =>['required'] ])
+        request()->validate(['description' =>['required']])
       );
       // $project->addTask(request('description'));
       return back();
