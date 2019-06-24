@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -25,3 +25,24 @@
     </div>
   </body>
 </html>
+
+-->
+
+@extends('layouts.app')
+
+@section('content')
+  <div class="content">
+    <h4><a href="/projects/create">Create</a></h4>
+    <ul>
+      <h3>Your Projects</h3>
+      @foreach ($projects as $project)
+      <li style='margin-left: 2em'>
+        <a href="/projects/{{ $project->id }}">
+          {{ $project->title }}
+          {{ $project->description }}
+        </a>
+      </li>
+      @endforeach
+    </ul>
+  </div>
+@endsection

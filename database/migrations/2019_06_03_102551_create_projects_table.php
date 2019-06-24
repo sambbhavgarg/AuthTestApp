@@ -19,7 +19,7 @@ class CreateProjectsTable extends Migration
             $table->text('title');
             $table->text('description');
             $table->timestamps();
-            $table->foreign('owner_id')->references('id')->on('projects')->onDelete('cascade');
+            //$table->foreign('owner_id')->references('id')->on('projects')->onDelete('cascade');
 
         });
     }

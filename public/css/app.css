@@ -4363,7 +4363,7 @@ input[type=button].btn-block {
 
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.32rem;
+  padding-top: 0.72rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
   font-size: 1.125rem;
@@ -10645,4 +10645,3 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-

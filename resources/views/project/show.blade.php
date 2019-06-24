@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -61,4 +61,68 @@
     <h3><a href="/projects">Go Back</a></h3>
 
   </body>
-</html>
+</html-->
+
+@extends('layouts.app')
+
+@section('content')
+
+  <body>
+    <div class="content" style="margin-bottom: 1em; padding-left: 2em; padding-right: 2em;">
+     <h3 class="title">Title: {{ $project->title }}</h3>
+     <h3 class="title">Description: {{ $project->description }}</h3>
+     <p>
+       <a href="/projects/{{ $project->id }}/edit">
+         Edit
+       </a>
+     </p>
+   </div>
+     @if($project->task->count())
+       <div  class="box">
+         @foreach($project->task as $task)
+           <div style="margin-bottom: 1em; padding-left: 2em; padding-right: 2em;">
+             <label class="checkbox" for="completed">
+
+             <form method="POST" action="/completed-tasks/{{ $task->id }}" >
+               @if($task->completed)
+                  @method('DELETE')
+               @endif
+               @csrf
+
+                 <div class="control">
+                   <input id="completed" type="checkbox" name="completed"
+                              onChange="this.form.submit()"
+                              {{ $task->completed ? 'checked' : '' }}>
+                      {{ $task->description }}
+                </div>
+           </form>
+         </label>
+         </div>
+       @endforeach
+      </div>
+     @endif
+
+    <form class="box" action="/projects/{{ $project->id }}/tasks" method="POST">
+      @csrf
+
+      <div class="field">
+        <label class="label">New Task</label>
+
+        <div class="control">
+          <input class="input  {{ $errors->has('description') ? 'is-danger' : '' }}" name="description" type="text" placeholder="New Task" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-link" type="submit">Add Task</button>
+        </div>
+      </div>
+      @include('errors')
+    </form>
+
+    <h3><a href="/projects">Go Back</a></h3>
+
+  </body>
+
+@endsection
